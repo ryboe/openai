@@ -3,17 +3,7 @@
 The `openai` CLI tool in a container so it doesn't pollute your local Python
 environment.
 
-## Install/Update
-
-```sh
-docker image pull ghcr.io/ryboe/openai:latest
-```
-
 ## Usage
-
-```sh
-docker container run --env OPENAI_API_KEY=$OPENAI_API_KEY ghcr.io/ryboe/openai openai api
-```
 
 Put this function in your shell config (e.g. `~/.zshrc`, `~/.bashrc`) and you
 can run `openai` as if it was installed natively.
@@ -32,8 +22,15 @@ openai() {
         exit 1
     fi
 
-    docker container run --env OPENAI_API_KEY=$OPENAI_API_KEY ghcr.io/ryboe/openai:latest openai $@
+    docker container run --pull always --env OPENAI_API_KEY=$OPENAI_API_KEY ghcr.io/ryboe/openai:latest openai $@
 }
+```
+
+Here are some examples of how to use `openai`:
+
+```sh
+openai api chat_completions.create --model gpt-3.5-turbo --message user 'what are the symptoms of lyme disease?'
+openai api image.create --num-images 1 --prompt 'giant gundam with ukrainian colors'
 ```
 
 ## How To Build The Image Locally
