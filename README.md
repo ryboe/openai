@@ -9,6 +9,8 @@ Put this function in your shell config (e.g. `~/.zshrc`, `~/.bashrc`) and you
 can run `openai` as if it was installed natively.
 
 ```sh
+OPENAI_API_KEY='redacted'
+
 openai() {
     if ! command -v docker &>/dev/null; then
         echo "docker is not installed"
