@@ -1,4 +1,4 @@
-# openai-container
+# OpenAI Container
 
 The `openai` CLI tool in a container so it doesn't pollute your local Python
 environment.
